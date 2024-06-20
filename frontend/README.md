@@ -16,8 +16,10 @@ In order to start development, following services needs to be installed
 git clone git@github.com:onlinejudge95/DiceHub.git
 ```
 
--   Do the changes required
--   Run the development server
+-   Generate a `.env.local` file using `.env` file as a template. Reach out to [onlinejudge95](mailto:onlinejudge95@gmail.com) for a working copy of the same
+
+*   Do the changes required
+*   Run the development server
 
 ```bash
 yarn dev
@@ -33,4 +35,4 @@ yarn build
 
 ## Deployment
 
-This website is deployed in `vercel` at this link https://example.com
+This website is deployed in `vercel` at this link https://dice-hub.vercel.app
