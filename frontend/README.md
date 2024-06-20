@@ -35,4 +35,4 @@ yarn build
 
 ## Deployment
 
-This website is deployed in `vercel` at this link https://example.com
+This website is deployed in `vercel` at this link https://dice-hub.vercel.app
