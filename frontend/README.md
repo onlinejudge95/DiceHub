@@ -16,7 +16,7 @@ In order to start development, following services needs to be installed
 git clone git@github.com:onlinejudge95/DiceHub.git
 ```
 
--   Generate a `.env.local` file using `.env` file as a template. Reach out to [onlinejudge95](mailto:onlinejudge95@gmail.com) for a working copy of the same
+-   Generate a `.env.local` file using `.env.example` file as a template. Reach out to [onlinejudge95](mailto:onlinejudge95@gmail.com) for a working copy of the same
 
 *   Do the changes required
 *   Run the development server
