@@ -1,0 +1,7 @@
+.git/
+certificates/
+node_modules/
+public/
+
+.*ignore
+yarn.lock
