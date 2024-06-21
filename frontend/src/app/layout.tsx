@@ -1,8 +1,18 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Gabarito, IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const ibm_plex_sans = IBM_Plex_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-ibm_plex_sans',
+  weight: '400',
+});
+const gabarito = Gabarito({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-gabarito',
+});
 
 export const metadata: Metadata = {
   title: 'DiceHub',
@@ -16,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={ibm_plex_sans.variable + ' ' + gabarito.variable}>
+        {children}
+      </body>
     </html>
   );
 }
