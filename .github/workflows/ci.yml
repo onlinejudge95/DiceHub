@@ -19,5 +19,7 @@ jobs:
           node-version: 20.14.0
           cache: yarn
           cache-dependency-path: ./frontend/yarn.lock
-      # - name: Install dependencies
-      #   run: yarn install
+      - name: Install dependencies
+        run: |
+          cd frontend
+          yarn install
