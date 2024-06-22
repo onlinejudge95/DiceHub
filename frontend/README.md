@@ -23,10 +23,17 @@ In order to start development, following services needs to be installed
 git clone git@github.com:onlinejudge95/DiceHub.git
 ```
 
+- Make sure you have installed all the dependencies
+
+```bash
+yarn install
+```
+
 - Generate a `.env.local` file using `.env.example` file as a template. Reach out to [onlinejudge95](mailto:onlinejudge95@gmail.com) for a working copy of the same
 
-* Do the changes required
-* Run the development server
+- Do the changes required
+
+- Run the development server
 
 ```bash
 yarn dev

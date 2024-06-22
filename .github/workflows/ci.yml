@@ -1,0 +1,23 @@
+name: "MR Pipeline"
+
+on:
+  pull_request:
+
+jobs:
+  set-up:
+    name: "Set-Up"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set-Up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.14.0
+          cache: yarn
+          cache-dependency-path: ./frontend/yarn.lock
+      # - name: Install dependencies
+      #   run: yarn install
