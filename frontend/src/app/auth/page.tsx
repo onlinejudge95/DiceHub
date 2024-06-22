@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Footer, Header } from '@/components/landing/navbar';
-import { Chrome } from '@/components/ui/icons';
+import { Chrome, Discord } from '@/components/ui/icons';
 
 const Authentication: React.FC = () => {
   return (
@@ -22,6 +22,10 @@ const Authentication: React.FC = () => {
                 <Button variant="outline" className="w-full">
                   <Chrome className="mr-2 h-4 w-4" />
                   Sign in with Google
+                </Button>
+                <Button variant="outline" className="w-full">
+                  <Discord className="mr-2 h-4 w-4" />
+                  Sign in with Discord
                 </Button>
                 <div className="mt-4 text-center text-sm">
                   Don&apos;t have an account?{' '}
