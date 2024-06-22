@@ -5,11 +5,11 @@ on:
 
 defaults:
   run:
-    shell: bash
+    shell: sh
 
 jobs:
-  set-up:
-    name: Set-Up
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,21 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd frontend
-          yarn install --frozen-lockfile
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    needs:
-      - set-up
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set-Up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.14.0
-          cache: yarn
-          cache-dependency-path: ./frontend/yarn.lock
+          yarn install
       - name: Run linting
         run: |
           cd frontend
