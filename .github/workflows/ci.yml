@@ -3,13 +3,14 @@ name: "MR Pipeline"
 on:
   pull_request:
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   set-up:
-    name: "Set-Up"
+    name: Set-Up
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,4 +23,26 @@ jobs:
       - name: Install dependencies
         run: |
           cd frontend
-          yarn install
+          yarn install --frozen-lockfile
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    needs:
+      - set-up
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set-Up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.14.0
+          cache: yarn
+          cache-dependency-path: ./frontend/yarn.lock
+      - name: Run linting
+        run: |
+          cd frontend
+          yarn lint
+      - name: Run formatting
+        run: |
+          cd frontend
+          yarn format
