@@ -40,8 +40,9 @@ jobs:
     needs:
       - lint
     env:
-      VERCEL_ORG_ID: ${{ SECRETS.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ SECRETS.VERCEL_PROJECT_ID }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -58,12 +59,25 @@ jobs:
       - name: Pull Vercel Environment Information
         run: |
           cd frontend
-          vercel pull --yes --environment preview --token ${{ secrets.VERCEL_TOKEN }}
+          vercel pull --yes --environment preview --token $VERCEL_TOKEN
       - name: Build Project Artifacts
         run: |
           cd frontend
-          vercel build --token ${{ secrets.VERCEL_TOKEN }}
+          vercel build --token $VERCEL_TOKEN
       - name: Deploy Project Artifacts to Vercel
+        id: deploy
         run: |
           cd frontend
-          vercel deploy --prebuilt --token ${{ secrets.VERCEL_TOKEN }}
+          DEPLOYMENT_URL=$(vercel deploy --prebuilt --token $VERCEL_TOKEN | tee /dev/tty | tail -n1)
+          echo "::set-output name=url::$DEPLOYMENT_URL"
+      - name: Update MR
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const deploymentUrl = '${{ steps.deploy.outputs.url }}';
+            github.issues.createComment({
+              issue_number:context.issue.number,
+              owner:context.repo.owner,
+              repo:context.repo.repo,
+              body:`🚀 Preview URL: ${deploymentUrl}`
+            })
