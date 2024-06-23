@@ -1,5 +1,8 @@
 # DiceHub - frontend
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/onlinejudge95/DiceHub/ci-ui.yml?style=flat-square&logo=githubactions&logoSize=amg&label=CI%20-%20UI)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/onlinejudge95/DiceHub/cd-ui.yml?style=flat-square&logo=githubactions&logoSize=amg&label=CD%20-%20UI)
+
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
@@ -23,10 +26,17 @@ In order to start development, following services needs to be installed
 git clone git@github.com:onlinejudge95/DiceHub.git
 ```
 
+- Make sure you have installed all the dependencies
+
+```bash
+yarn install
+```
+
 - Generate a `.env.local` file using `.env.example` file as a template. Reach out to [onlinejudge95](mailto:onlinejudge95@gmail.com) for a working copy of the same
 
-* Do the changes required
-* Run the development server
+- Do the changes required
+
+- Run the development server
 
 ```bash
 yarn dev
@@ -38,6 +48,12 @@ yarn dev
 yarn lint
 yarn format
 yarn build
+```
+
+- If your changes include adding an env variable then you need to run the following command so that the env variable is available for the preview deployment along with production
+
+```bash
+vercel env add
 ```
 
 ## Deployment
