@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Gabarito, IBM_Plex_Sans } from 'next/font/google';
+
 import './globals.css';
 
 const ibm_plex_sans = IBM_Plex_Sans({

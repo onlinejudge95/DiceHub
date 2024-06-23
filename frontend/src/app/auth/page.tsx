@@ -1,42 +1,42 @@
-import React from 'react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+'use client';
+
+import React, { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+
 import { Footer, Header } from '@/components/landing/navbar';
-import { Chrome, Discord } from '@/components/ui/icons';
+import { AuthForm } from '@/components/auth/authForms';
+
+const AuthenticationInline: React.FC = () => {
+  const searchParams = useSearchParams();
+  const isSignInAction = searchParams.get('action') === 'sign-in';
+
+  return (
+    <AuthForm
+      title={isSignInAction ? 'Sign In' : 'Sign Up'}
+      description={
+        isSignInAction
+          ? 'Sign in with your socials to roll some dices'
+          : 'Sign up with your socials to roll some dices'
+      }
+      helper={{
+        text: isSignInAction
+          ? "Don't have an account?"
+          : 'Already have an account?',
+        action: isSignInAction ? 'sign-up' : 'sign-in',
+        linkText: isSignInAction ? 'Sign Up' : 'Sign In',
+      }}
+    />
+  );
+};
 
 const Authentication: React.FC = () => {
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <Header />
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6 max-w-md mx-auto">
-            <div className="space-y-6">
-              <div className="space-y-2 text-center">
-                <h1 className="text-3xl font-bold">Sign In</h1>
-                <p className="text-muted-foreground">
-                  Sign in with your Google account to access your account.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <Button variant="outline" className="w-full">
-                  <Chrome className="mr-2 h-4 w-4" />
-                  Sign in with Google
-                </Button>
-                <Button variant="outline" className="w-full">
-                  <Discord className="mr-2 h-4 w-4" />
-                  Sign in with Discord
-                </Button>
-                <div className="mt-4 text-center text-sm">
-                  Don&apos;t have an account?{' '}
-                  <Link href="#" className="underline" prefetch={false}>
-                    Sign Up
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Suspense>
+          <AuthenticationInline />
+        </Suspense>
       </main>
       <Footer />
     </div>
