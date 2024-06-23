@@ -1,8 +1,15 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
 import { Dice } from '../ui/icons';
 
 export const Header: React.FC = () => {
+  const path = usePathname();
+  const isLandingPage = path === '/';
+
   return (
     <header className="px-4 lg:px-6 h-14 flex items-center">
       <Link
@@ -15,28 +22,28 @@ export const Header: React.FC = () => {
       </Link>
       <nav className="ml-auto flex gap-4 sm:gap-6">
         <Link
-          href="#features"
+          href={isLandingPage ? '#features' : '/#features'}
           className="text-sm font-medium hover:underline underline-offset-4"
           prefetch={false}
         >
           Features
         </Link>
         <Link
-          href="#pricing"
+          href={isLandingPage ? '#pricing' : '/#pricing'}
           className="text-sm font-medium hover:underline underline-offset-4"
           prefetch={false}
         >
           Pricing
         </Link>
         <Link
-          href="#about"
+          href={isLandingPage ? '#about' : '/#about'}
           className="text-sm font-medium hover:underline underline-offset-4"
           prefetch={false}
         >
           About
         </Link>
         <Link
-          href="#contact"
+          href={isLandingPage ? '#contact' : '/#contact'}
           className="text-sm font-medium hover:underline underline-offset-4"
           prefetch={false}
         >
