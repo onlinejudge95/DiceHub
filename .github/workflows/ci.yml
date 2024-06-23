@@ -2,6 +2,8 @@ name: "CI - UI"
 
 on:
   pull_request:
+    paths:
+      - "frontend/**"
 
 defaults:
   run:
