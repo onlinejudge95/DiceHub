@@ -1,14 +1,14 @@
 # DiceHub - frontend
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/onlinejudge95/DiceHub/ci-ui.yml?style=flat-square&logo=githubactions&logoSize=amg&label=CI%20-%20UI)
+[![CD](https://github.com/onlinejudge95/DiceHub/actions/workflows/cd-ui.yml/badge.svg)](https://github.com/onlinejudge95/DiceHub/actions/workflows/cd-ui.yml)
+
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
-
-[![CI](https://github.com/onlinejudge95/DiceHub/actions/workflows/ci-ui.yml/badge.svg)](https://github.com/onlinejudge95/DiceHub/actions/workflows/ci-ui.yml)
-[![CD](https://github.com/onlinejudge95/DiceHub/actions/workflows/cd-ui.yml/badge.svg)](https://github.com/onlinejudge95/DiceHub/actions/workflows/cd-ui.yml)
 
 ## Pre-Requisites
 
@@ -48,6 +48,12 @@ yarn dev
 yarn lint
 yarn format
 yarn build
+```
+
+- If your changes include adding an env variable then you need to run the following command so that the env variable is available for the preview deployment along with production
+
+```bash
+vercel env add
 ```
 
 ## Deployment
