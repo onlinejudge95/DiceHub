@@ -7,6 +7,9 @@
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
 
+[![CI](https://github.com/onlinejudge95/DiceHub/actions/workflows/ci-ui.yml/badge.svg)](https://github.com/onlinejudge95/DiceHub/actions/workflows/ci-ui.yml)
+[![CD](https://github.com/onlinejudge95/DiceHub/actions/workflows/cd-ui.yml/badge.svg)](https://github.com/onlinejudge95/DiceHub/actions/workflows/cd-ui.yml)
+
 ## Pre-Requisites
 
 In order to start development, following services needs to be installed
