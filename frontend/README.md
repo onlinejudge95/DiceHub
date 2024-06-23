@@ -1,7 +1,6 @@
 # DiceHub - frontend
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/onlinejudge95/DiceHub/ci-ui.yml?style=flat-square&logo=githubactions&logoSize=amg&label=CI%20-%20UI)
-[![CD](https://github.com/onlinejudge95/DiceHub/actions/workflows/cd-ui.yml/badge.svg)](https://github.com/onlinejudge95/DiceHub/actions/workflows/cd-ui.yml)
 
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
