@@ -1,4 +1,4 @@
-name: "CD - UI"
+name: "CD"
 
 on:
   push:
