@@ -49,6 +49,13 @@ export const Header: React.FC = () => {
         >
           Contact
         </Link>
+        <Link
+          href="/auth?action=sign-in"
+          className="text-sm font-medium hover:underline underline-offset-4"
+          prefetch={false}
+        >
+          Login
+        </Link>
       </nav>
     </header>
   );
