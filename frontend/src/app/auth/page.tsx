@@ -5,6 +5,12 @@ import { useSearchParams } from 'next/navigation';
 
 import { Footer, Header } from '@/components/landing/navbar';
 import { AuthForm } from '@/components/auth/authForms';
+import {
+  discordSignInHandler,
+  discordSignUpHandler,
+  googleSignInHandler,
+  googleSignUpHandler,
+} from '@/lib/authHandlers';
 
 const AuthenticationInline: React.FC = () => {
   const searchParams = useSearchParams();
@@ -24,6 +30,12 @@ const AuthenticationInline: React.FC = () => {
           : 'Already have an account?',
         action: isSignInAction ? 'sign-up' : 'sign-in',
         linkText: isSignInAction ? 'Sign Up' : 'Sign In',
+      }}
+      clickHandler={{
+        googleSignInHandler: googleSignInHandler,
+        googleSignUpHandler: googleSignUpHandler,
+        discordSignInHandler: discordSignInHandler,
+        discordSignUpHandler: discordSignUpHandler,
       }}
     />
   );
