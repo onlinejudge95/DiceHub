@@ -25,8 +25,21 @@ jobs:
         run: |
           cd backend
           go mod tidy
+          go install mvdan.cc/gofumpt@latest
+          go install -v github.com/incu6us/goimports-reviser/v3@latest
       - name: Run formatting
         run: |
           cd backend
-          go install mvdan.cc/gofumpt@latest
           gofumpt -d -l .
+      - name: Run import sorting
+        run: |
+          cd backend
+          goimports-reviser \
+            -list-diff \
+            -rm-unused \
+            -set-exit-status \
+            -use-cache \
+            -company-prefixes 'github.com/onlinejudge95/*' \
+            -excludes 'bin/,.env*,.gitignore,*.md' \
+            -output 'stdout' \
+            ./...
