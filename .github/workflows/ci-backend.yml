@@ -26,11 +26,22 @@ jobs:
           cd backend
           go mod tidy
           go install mvdan.cc/gofumpt@latest
+          go install github.com/segmentio/golines@latest
           go install -v github.com/incu6us/goimports-reviser/v3@latest
       - name: Run formatting
         run: |
           cd backend
           gofumpt -d -l .
+          golines \
+            --chain-split-dots \
+            --dry-run \
+            --ignore-generated \
+            --list-files \
+            --reformat-tags \
+            --shorten-comments \
+            --write-output \
+            --max-len=100 \
+            cmd internal
       - name: Run import sorting
         run: |
           cd backend
