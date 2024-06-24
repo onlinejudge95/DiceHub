@@ -1,5 +1,7 @@
 # DiceHub - backend
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/onlinejudge95/DiceHub/ci-backend.yml?style=flat-square&logo=githubactions&logoSize=amg&label=CI%20-%20Backend)
+
 ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
 
 ## Pre-Requisites

@@ -28,4 +28,5 @@ jobs:
       - name: Run formatting
         run: |
           cd backend
+          go install mvdan.cc/gofumpt@latest
           gofumpt -d -l .
