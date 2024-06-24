@@ -1,4 +1,4 @@
-name: "CI"
+name: "CI - UI"
 
 on:
   pull_request:
