@@ -4,11 +4,13 @@ import React, { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
+import { Footer } from '@/components/ui/footer';
+import { upsertUserProfileData } from './handler';
+
 const Dashboard: React.FC = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const event = searchParams.get('event');
+  const event = useSearchParams().get('event');
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -16,19 +18,21 @@ const Dashboard: React.FC = () => {
     }
   }, [status, router]);
 
-  if (status === 'loading') {
-    return <h2>Loading...</h2>;
-  }
+  useEffect(() => {
+    if (event === 'register' && session) {
+      upsertUserProfileData(session);
+    }
+  }, [event, session]);
 
   if (!session) {
     return null;
   }
 
   return (
-    <>
-      <h1>Hello, World!!</h1>
-      <p>Received {event}</p>
-    </>
+    <div className="flex flex-col min-h-[100dvh]">
+      <main className="flex-1"></main>
+      <Footer />
+    </div>
   );
 };
 

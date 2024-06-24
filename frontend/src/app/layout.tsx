@@ -3,6 +3,7 @@ import { Gabarito, IBM_Plex_Sans } from 'next/font/google';
 
 import { SessionProviderWrapper } from '@/components/wrapper/session';
 import './globals.css';
+import { Suspense } from 'react';
 
 const ibm_plex_sans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -29,7 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={ibm_plex_sans.variable + ' ' + gabarito.variable}>
-        <SessionProviderWrapper>{children}</SessionProviderWrapper>
+        <SessionProviderWrapper>
+          <Suspense>{children}</Suspense>
+        </SessionProviderWrapper>
       </body>
     </html>
   );
