@@ -1,8 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-
-import { Button } from '../ui/button';
-import { Chrome, Discord } from '../ui/icons';
+import { Button } from '@/components/ui/button';
+import { Chrome, Discord } from '@/components/ui/icons';
 
 interface AuthFormHelperType {
   text: string;
@@ -44,8 +43,8 @@ export const AuthForm: React.FC<AuthFormProps> = ({
               className="w-full"
               onClick={
                 helper.action === 'sign-in'
-                  ? clickHandler.googleSignInHandler
-                  : clickHandler.googleSignUpHandler
+                  ? clickHandler.googleSignUpHandler
+                  : clickHandler.googleSignInHandler
               }
             >
               <Chrome className="mr-2 h-4 w-4" />
@@ -56,8 +55,8 @@ export const AuthForm: React.FC<AuthFormProps> = ({
               className="w-full"
               onClick={
                 helper.action === 'sign-in'
-                  ? clickHandler.discordSignInHandler
-                  : clickHandler.discordSignUpHandler
+                  ? clickHandler.discordSignUpHandler
+                  : clickHandler.discordSignInHandler
               }
             >
               <Discord className="mr-2 h-4 w-4" />

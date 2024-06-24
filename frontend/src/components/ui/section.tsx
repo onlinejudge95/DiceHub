@@ -1,8 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-import { Check } from '../ui/icons';
+import { Check } from './icons';
 
 export const Hero: React.FC = () => {
   return (

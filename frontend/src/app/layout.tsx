@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Gabarito, IBM_Plex_Sans } from 'next/font/google';
 
+import { SessionProviderWrapper } from '@/components/wrapper/session';
 import './globals.css';
 
 const ibm_plex_sans = IBM_Plex_Sans({
@@ -28,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={ibm_plex_sans.variable + ' ' + gabarito.variable}>
-        {children}
+        <SessionProviderWrapper>{children}</SessionProviderWrapper>
       </body>
     </html>
   );

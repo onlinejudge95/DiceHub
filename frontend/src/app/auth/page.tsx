@@ -3,14 +3,15 @@
 import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-import { Footer, Header } from '@/components/landing/navbar';
-import { AuthForm } from '@/components/auth/authForms';
 import {
   discordSignInHandler,
   discordSignUpHandler,
   googleSignInHandler,
   googleSignUpHandler,
-} from '@/lib/authHandlers';
+} from './handlers';
+import { AuthForm } from './form';
+import { Footer } from '@/components/ui/footer';
+import { UnauthenticatedHeader } from '@/components/ui/header';
 
 const AuthenticationInline: React.FC = () => {
   const searchParams = useSearchParams();
@@ -44,7 +45,7 @@ const AuthenticationInline: React.FC = () => {
 const Authentication: React.FC = () => {
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <Header />
+      <UnauthenticatedHeader />
       <main className="flex-1">
         <Suspense>
           <AuthenticationInline />

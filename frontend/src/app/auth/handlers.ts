@@ -5,7 +5,7 @@ export const googleSignInHandler = async () => {
 };
 
 export const googleSignUpHandler = async () => {
-  await signIn('google', { callbackUrl: '/dashboard' });
+  await signIn('google', { callbackUrl: '/dashboard?event=register' });
 };
 
 export const discordSignInHandler = async () => {
@@ -13,5 +13,5 @@ export const discordSignInHandler = async () => {
 };
 
 export const discordSignUpHandler = async () => {
-  await signIn('discord', { callbackUrl: '/dashboard' });
+  await signIn('discord', { callbackUrl: '/dashboard?event=register' });
 };
