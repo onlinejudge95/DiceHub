@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { Button } from '../ui/button';
-import { Chrome, Discord } from '../ui/icons';
+import { Button } from '@/components/ui/button';
+import { Chrome, Discord } from '@/components/ui/icons';
 
 interface AuthFormHelperType {
   text: string;
@@ -10,16 +10,25 @@ interface AuthFormHelperType {
   linkText: string;
 }
 
+interface AuthFormClickHandlerType {
+  googleSignInHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  googleSignUpHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  discordSignInHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  discordSignUpHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
 interface AuthFormProps {
   title: string;
   description: string;
   helper: AuthFormHelperType;
+  clickHandler: AuthFormClickHandlerType;
 }
 
 export const AuthForm: React.FC<AuthFormProps> = ({
   title,
   description,
   helper,
+  clickHandler,
 }) => {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
@@ -30,11 +39,27 @@ export const AuthForm: React.FC<AuthFormProps> = ({
             <p className="text-muted-foreground">{description}</p>
           </div>
           <div className="space-y-4">
-            <Button variant="outline" className="w-full">
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={
+                helper.action === 'sign-in'
+                  ? clickHandler.googleSignUpHandler
+                  : clickHandler.googleSignInHandler
+              }
+            >
               <Chrome className="mr-2 h-4 w-4" />
               {title} with Google
             </Button>
-            <Button variant="outline" className="w-full">
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={
+                helper.action === 'sign-in'
+                  ? clickHandler.discordSignUpHandler
+                  : clickHandler.discordSignInHandler
+              }
+            >
               <Discord className="mr-2 h-4 w-4" />
               {title} with Discord
             </Button>
