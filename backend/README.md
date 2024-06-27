@@ -9,6 +9,15 @@ In order to start development, following services needs to be installed
 - `git`
 - `go`
 
+We need to create self signed certificates for running the code in development environment i.e local machine.
+
+```bash
+cd certificates
+openssl req -x509 -newkey rsa:2048 -nodes -keyout server.key -out server.crt -days 365
+sudo cp certificates/server.crt /usr/local/share/ca-certificates/
+sudo update-ca-certificates
+```
+
 ## Development
 
 - Clone the repo using

@@ -16,3 +16,4 @@
 
 bin/
 .env
+certificates/
