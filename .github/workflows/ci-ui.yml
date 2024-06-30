@@ -1,9 +1,9 @@
-name: "CI"
+name: 'CI'
 
 on:
   pull_request:
     paths:
-      - "frontend/**"
+      - 'frontend/**'
 
 defaults:
   run:

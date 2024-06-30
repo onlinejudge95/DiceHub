@@ -1,11 +1,11 @@
-name: "CD"
+name: 'CD'
 
 on:
   push:
     branches:
       - main
     paths:
-      - "frontend/**"
+      - 'frontend/**'
 
 defaults:
   run:

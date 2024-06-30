@@ -50,7 +50,7 @@ export const UnauthenticatedHeader: React.FC = () => {
           Contact
         </Link>
         <Link
-          href="/auth?action=sign-in"
+          href="/auth"
           className="text-sm font-medium hover:underline underline-offset-4"
           prefetch={false}
         >

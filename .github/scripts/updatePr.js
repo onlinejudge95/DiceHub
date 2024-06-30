@@ -10,8 +10,8 @@ module.exports = async ({ github, context }) => {
 
   for (let comment of response.data) {
     if (
-      comment.user.type === "Bot" &&
-      comment.user.login === "github-actions[bot]"
+      comment.user.type === 'Bot' &&
+      comment.user.login === 'github-actions[bot]'
     ) {
       isFirstComment = false;
       commentId = comment.id;
