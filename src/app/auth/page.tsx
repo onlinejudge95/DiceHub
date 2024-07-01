@@ -1,18 +1,19 @@
 'use client';
 
 import React from 'react';
-import { signIn, SignInOptions } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 
 import { Footer } from '@/components/ui/footer';
 import { UnauthenticatedHeader } from '@/components/ui/header';
 import { Button } from '@/components/ui/button';
 import { Chrome } from '@/components/ui/icons';
+import { redirect } from 'next/navigation';
 
 const Authentication: React.FC = () => {
-  const googleSignInHandler = async (): Promise<void> => {
-    const opts: SignInOptions = { callbackUrl: '/dashboard' };
-    await signIn('google', opts);
-  };
+  const { status } = useSession();
+  if (status === 'authenticated') {
+    redirect('/dashboard');
+  }
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
@@ -32,7 +33,9 @@ const Authentication: React.FC = () => {
                 <Button
                   variant="outline"
                   className="w-full"
-                  onClick={googleSignInHandler}
+                  onClick={() => {
+                    signIn('google');
+                  }}
                 >
                   <Chrome className="mr-2 h-4 w-4" />
                   Sign In with Google
