@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Gabarito, IBM_Plex_Sans } from 'next/font/google';
+import { Suspense } from 'react';
 
 import { SessionProviderWrapper } from '@/components/wrapper/session';
 import './globals.css';
-import { Suspense } from 'react';
 
 const ibm_plex_sans = IBM_Plex_Sans({
   subsets: ['latin'],

@@ -1,14 +1,23 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { signIn, useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 
-import { googleSignInHandler } from './handlers';
 import { Footer } from '@/components/ui/footer';
 import { UnauthenticatedHeader } from '@/components/ui/header';
 import { Button } from '@/components/ui/button';
 import { Chrome } from '@/components/ui/icons';
 
 const Authentication: React.FC = () => {
+  const { status } = useSession();
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      redirect('/dashboard');
+    }
+  }, [status]);
+
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <UnauthenticatedHeader />
@@ -27,7 +36,9 @@ const Authentication: React.FC = () => {
                 <Button
                   variant="outline"
                   className="w-full"
-                  onClick={googleSignInHandler}
+                  onClick={() => {
+                    signIn('google');
+                  }}
                 >
                   <Chrome className="mr-2 h-4 w-4" />
                   Sign In with Google
