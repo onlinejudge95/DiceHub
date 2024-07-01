@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 
 import { Footer } from '@/components/ui/footer';
@@ -11,9 +11,12 @@ import { redirect } from 'next/navigation';
 
 const Authentication: React.FC = () => {
   const { status } = useSession();
-  if (status === 'authenticated') {
-    redirect('/dashboard');
-  }
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      redirect('/dashboard');
+    }
+  }, [status]);
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
