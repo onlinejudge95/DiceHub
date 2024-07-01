@@ -2,12 +2,12 @@
 
 import React, { useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 
 import { Footer } from '@/components/ui/footer';
 import { UnauthenticatedHeader } from '@/components/ui/header';
 import { Button } from '@/components/ui/button';
 import { Chrome } from '@/components/ui/icons';
-import { redirect } from 'next/navigation';
 
 const Authentication: React.FC = () => {
   const { status } = useSession();
