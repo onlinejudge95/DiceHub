@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
+import { signIn } from 'next-auth/react';
 
-import { googleSignInHandler } from './handlers';
 import { Footer } from '@/components/ui/footer';
 import { UnauthenticatedHeader } from '@/components/ui/header';
 import { Button } from '@/components/ui/button';
@@ -27,7 +27,9 @@ const Authentication: React.FC = () => {
                 <Button
                   variant="outline"
                   className="w-full"
-                  onClick={googleSignInHandler}
+                  onClick={() => {
+                    signIn('google', { callbackUrl: '/dashboard' });
+                  }}
                 >
                   <Chrome className="mr-2 h-4 w-4" />
                   Sign In with Google
