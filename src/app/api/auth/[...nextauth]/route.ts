@@ -19,28 +19,30 @@ const handler = NextAuth({
     error: '/error',
   },
   callbacks: {
-    async signIn({ profile }) {
-      if (!profile?.email) {
+    async signIn({ user }) {
+      if (!user?.email) {
         throw new Error('No email associated with the email profile');
       }
 
       await prisma.users.upsert({
-        where: { email: profile.email },
+        where: { email: user.email },
         create: {
-          id: profile.sub as string,
-          email: profile.email,
-          name: profile.name,
-          avatar: profile.picture,
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          avatar: user.image,
         },
         update: {
-          name: profile.name,
-          avatar: profile.picture,
+          name: user.name,
+          avatar: user.image,
         },
       });
       return true;
     },
     async session({ session, token }) {
-      session.user.id = token.id;
+      if (session.user) {
+        session.user.id = token.sub;
+      }
 
       return session;
     },
