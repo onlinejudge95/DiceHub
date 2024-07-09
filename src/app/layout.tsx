@@ -29,6 +29,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {(process.env.NODE_ENV === 'development' ||
+          process.env.VERCEL_ENV === 'preview') && (
+            // eslint-disable-next-line @next/next/no-sync-scripts
+            <script
+              data-project-id="IXh10dtmz7uN4NOkDMSf0RKn9P8QnDCfTOb0fhJB"
+              data-is-production-environment="false"
+              src="https://snippet.meticulous.ai/v1/meticulous.js"
+            />
+          )}
+      </head>
       <body className={ibm_plex_sans.variable + ' ' + gabarito.variable}>
         <SessionProviderWrapper>
           <Suspense>{children}</Suspense>
