@@ -9,14 +9,14 @@ export const Footer: React.FC = () => {
       </p>
       <nav className="sm:ml-auto flex gap-4 sm:gap-6">
         <Link
-          href="#"
+          href="/terms"
           className="text-xs hover:underline underline-offset-4"
           prefetch={false}
         >
           Terms of Service
         </Link>
         <Link
-          href="#"
+          href="/privacy"
           className="text-xs hover:underline underline-offset-4"
           prefetch={false}
         >
